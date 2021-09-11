@@ -1,0 +1,77 @@
+import Link from "./styles/Link";
+import Right from "./styles/Right";
+import { FaGithub } from "react-icons/fa";
+import { AiFillApi } from "react-icons/ai";
+import styled from "styled-components";
+
+const API = styled(AiFillApi)`
+  padding: 10px;
+`;
+
+const Div = styled.div`
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+`;
+
+const Source = (): JSX.Element => {
+  return (
+    <Right>
+      <Link
+        href="https://dummyapi.io/docs/user"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <API>
+          <title>API</title>
+        </API>
+      </Link>
+
+      <Link>
+        <FaGithub />
+      </Link>
+
+      <div className="tooltip">
+        Hover over me
+        <span className="tooltiptext">Tooltip text</span>
+      </div>
+    </Right>
+  );
+};
+
+export default Source;
