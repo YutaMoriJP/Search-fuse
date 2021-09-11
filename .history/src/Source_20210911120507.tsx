@@ -1,6 +1,8 @@
+import Link from "./styles/Link";
 import Right from "./styles/Right";
 import { FaGithub } from "react-icons/fa";
 import { AiFillApi } from "react-icons/ai";
+import { IconWrapper } from "./styles/IconWrapper";
 import IconComponent from "./Icon";
 
 const Source = (): JSX.Element => {
@@ -11,11 +13,17 @@ const Source = (): JSX.Element => {
         txt="API Source"
         href="https://dummyapi.io/docs/user"
       />
-      <IconComponent
-        Icon={<FaGithub />}
-        txt="GitHub"
-        href="https://dummyapi.io/docs/user"
-      />
+
+      <IconWrapper>
+        <Link
+          href="https://dummyapi.io/docs/user"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span className="tooltiptext">Github</span>
+          <FaGithub />
+        </Link>
+      </IconWrapper>
     </Right>
   );
 };

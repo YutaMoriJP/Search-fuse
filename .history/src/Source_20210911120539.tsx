@@ -13,7 +13,7 @@ const Source = (): JSX.Element => {
       />
       <IconComponent
         Icon={<FaGithub />}
-        txt="GitHub"
+        txt="GitHub Source"
         href="https://dummyapi.io/docs/user"
       />
     </Right>
