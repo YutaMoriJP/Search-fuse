@@ -37,11 +37,7 @@ const Users = (): JSX.Element => {
         const { data } = await axios("/api");
         const { users }: { users: Res[] } = data;
         setData({ data: users, loaded: true });
-      } catch (e) {
-        const { data } = await axios("/.netlify/functions/api");
-        const { users }: { users: Res[] } = data;
-        setData({ data: users, loaded: true });
-      }
+      } catch (e) {}
     };
     fetchData();
   }, []);
