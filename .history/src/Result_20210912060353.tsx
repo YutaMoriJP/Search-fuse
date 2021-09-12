@@ -10,7 +10,7 @@ interface ResultProps {
 const Result = ({ result }: ResultProps): JSX.Element => {
   return (
     <Box background="#2a2a72" isShadow={true} shadowColor="#505050">
-      {/*result points at undefined if no user is found */}
+      {/* result points at undefined if no user is found */}
       {!result && <p>No User found... Pick a name from the list above.</p>}
       {result && (
         <>
