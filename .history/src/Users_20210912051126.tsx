@@ -20,22 +20,23 @@ const Users = (): JSX.Element => {
   });
   useEffect((): void => {
     //testing lazily importing modules
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const fetchModule = async (): Promise<void> => {
       //using dynamic module does not make sense here but just playing around with it
       //lazily import fetchData module
       const fetchData = (await import("./data/names")).default;
       //exports promise value so wait until it resolves
       const { data }: { data: Res[] } = await fetchData();
+      console.log(data);
       setData({ data, loaded: true });
     };
     //fetchModule();
 
     //fetch data from serverless function, to avoid exposting app-id
     const fetchData = async (): Promise<void> => {
-      const { data } = await axios("/api");
-      const { users }: { users: Res[] } = data;
-      setData({ data: users, loaded: true });
+      const { data } = await axios("/.netlify/functions/api");
+      const { users } = data;
+      const { data: userData }: { data: Res[] } = users;
+      setData({ data: userData, loaded: true });
     };
     fetchData();
   }, []);

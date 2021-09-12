@@ -27,15 +27,17 @@ const Users = (): JSX.Element => {
       const fetchData = (await import("./data/names")).default;
       //exports promise value so wait until it resolves
       const { data }: { data: Res[] } = await fetchData();
+      console.log(data);
       setData({ data, loaded: true });
     };
-    //fetchModule();
+    fetchModule();
 
     //fetch data from serverless function, to avoid exposting app-id
     const fetchData = async (): Promise<void> => {
-      const { data } = await axios("/api");
+      fetch("/api/").then(res => console.log(res));
+      const { data } = await axios("/.netlify/functions/api");
       const { users }: { users: Res[] } = data;
-      setData({ data: users, loaded: true });
+      // setData({ data: users, loaded: true });
     };
     fetchData();
   }, []);

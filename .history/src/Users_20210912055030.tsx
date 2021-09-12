@@ -29,7 +29,7 @@ const Users = (): JSX.Element => {
       const { data }: { data: Res[] } = await fetchData();
       setData({ data, loaded: true });
     };
-    //fetchModule();
+    fetchModule();
 
     //fetch data from serverless function, to avoid exposting app-id
     const fetchData = async (): Promise<void> => {

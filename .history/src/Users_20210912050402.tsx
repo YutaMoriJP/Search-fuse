@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Data from "./Data";
 import Form from "./Form";
 import axios from "axios";
-
 export interface Res {
   id: string;
   title: string;
@@ -20,7 +19,6 @@ const Users = (): JSX.Element => {
   });
   useEffect((): void => {
     //testing lazily importing modules
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const fetchModule = async (): Promise<void> => {
       //using dynamic module does not make sense here but just playing around with it
       //lazily import fetchData module
@@ -29,14 +27,12 @@ const Users = (): JSX.Element => {
       const { data }: { data: Res[] } = await fetchData();
       setData({ data, loaded: true });
     };
-    //fetchModule();
-
-    //fetch data from serverless function, to avoid exposting app-id
-    const fetchData = async (): Promise<void> => {
-      const { data } = await axios("/api");
-      const { users }: { users: Res[] } = data;
-      setData({ data: users, loaded: true });
+    //fetch data from serverless function
+    const fetchData = async () => {
+      const data = await axios("/.netlify/functions/api");
+      console.log("data", data);
     };
+    fetchModule();
     fetchData();
   }, []);
   return (
