@@ -5,4 +5,4 @@ publish = "build"
 
 [[redirects]]
 from = "/api"
-to = "http://localhost:8888/.netlify/functions/api
+to = "http://.netlify/functions/api
