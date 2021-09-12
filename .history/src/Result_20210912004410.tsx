@@ -15,7 +15,7 @@ const Result = ({ result }: ResultProps): JSX.Element => {
       {result && (
         <>
           <p>
-            {result.item.title.toUpperCase()}. {result.item.firstName}{" "}
+            {result.item.title.toUpperCase()}. {result.item.firstName} {' '}
             {result.item.lastName}
           </p>
 
