@@ -32,29 +32,18 @@ const Users = (): JSX.Element => {
       const fetchData = (await import("./data/names")).default;
       //exports promise value so wait until it resolves
       const { data }: { data: Res[] } = await fetchData();
-      setData({ data, loaded: true, status: "resolved", error: null });
+      setData({ data, loaded: true });
     };
     //fetchModule();
 
     //fetch data from serverless function, to avoid exposting app-id
     const fetchData = async (): Promise<void> => {
-      try {
-        const { data } = await axios("/api");
-        const { users }: { users: Res[] } = data;
-        setData({ data: users, loaded: true, status: "resolved", error: null });
-      } catch (error) {
-        setData({
-          data: [],
-          loaded: false,
-          status: "rejected",
-          error: error as Error,
-        });
-      }
+      const { data } = await axios("/api");
+      const { users }: { users: Res[] } = data;
+      setData({ data: users, loaded: true });
     };
     fetchData();
   }, []);
-  if (status === "rejected")
-    return <p>{error!?.message || "something went wrong..."}</p>;
   return (
     <>
       <Data names={data} loaded={loaded} />

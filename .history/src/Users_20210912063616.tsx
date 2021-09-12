@@ -53,8 +53,6 @@ const Users = (): JSX.Element => {
     };
     fetchData();
   }, []);
-  if (status === "rejected")
-    return <p>{error!?.message || "something went wrong..."}</p>;
   return (
     <>
       <Data names={data} loaded={loaded} />

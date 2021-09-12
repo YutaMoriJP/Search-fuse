@@ -43,18 +43,11 @@ const Users = (): JSX.Element => {
         const { users }: { users: Res[] } = data;
         setData({ data: users, loaded: true, status: "resolved", error: null });
       } catch (error) {
-        setData({
-          data: [],
-          loaded: false,
-          status: "rejected",
-          error: error as Error,
-        });
+        setData({ data: null, loaded: false, status: "rejected", error });
       }
     };
     fetchData();
   }, []);
-  if (status === "rejected")
-    return <p>{error!?.message || "something went wrong..."}</p>;
   return (
     <>
       <Data names={data} loaded={loaded} />

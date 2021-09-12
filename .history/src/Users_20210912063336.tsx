@@ -38,23 +38,12 @@ const Users = (): JSX.Element => {
 
     //fetch data from serverless function, to avoid exposting app-id
     const fetchData = async (): Promise<void> => {
-      try {
-        const { data } = await axios("/api");
-        const { users }: { users: Res[] } = data;
-        setData({ data: users, loaded: true, status: "resolved", error: null });
-      } catch (error) {
-        setData({
-          data: [],
-          loaded: false,
-          status: "rejected",
-          error: error as Error,
-        });
-      }
+      const { data } = await axios("/api");
+      const { users }: { users: Res[] } = data;
+      setData({ data: users, loaded: true, status: "resolved", error: null });
     };
     fetchData();
   }, []);
-  if (status === "rejected")
-    return <p>{error!?.message || "something went wrong..."}</p>;
   return (
     <>
       <Data names={data} loaded={loaded} />
