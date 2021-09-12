@@ -4,5 +4,3 @@ functions = "src/server"
 publish = "build"
 
 [[redirects]]
-from = "/api"
-to = "/.netlify/functions/api
