@@ -11,9 +11,7 @@ const Box = styled.article`
   align-items: center;
   padding: 10px;
   border-radius: 6px;
-  max-width: 400px;
-  width: 80%;
-  margin: auto;
+
   ${({ isShadow = false }: { isShadow: boolean }) =>
     isShadow &&
     css`

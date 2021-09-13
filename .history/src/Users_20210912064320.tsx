@@ -56,7 +56,7 @@ const Users = (): JSX.Element => {
   }, []);
   if (status === "rejected")
     return (
-      <Box background="#272727" isShadow={false} shadowColor="#fff">
+      <Box>
         <p>{error!?.message || "something went wrong..."}</p>
       </Box>
     );

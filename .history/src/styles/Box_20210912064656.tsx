@@ -13,7 +13,6 @@ const Box = styled.article`
   border-radius: 6px;
   max-width: 400px;
   width: 80%;
-  margin: auto;
   ${({ isShadow = false }: { isShadow: boolean }) =>
     isShadow &&
     css`
