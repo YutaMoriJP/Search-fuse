@@ -5,6 +5,6 @@ publish = "build"
  
  [[redirects]]
     from = "/api/"
-    to="https://search-fusejs-reacts.netlify.app/.netlify/functions/api"
+    to="http://localhost:8888/.netlify/functions/uniqueEndpoint"
 
  
